@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
     //title的高度
     private int tHeight;
-    //记录右侧当前title的索引
+    //记录右侧当前可见的第一个item的position
     private int first = 0;
     private GridLayoutManager rightManager;
 
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //判断如果是header
                 if (right.get(first).isHeader) {
-                    //获取header的view
+                    //获取此组名item的view
                     View view = rightManager.findViewByPosition(first);
                     if (view != null) {
-                        //如果header顶部和父容器顶部距离大于等于tHeight,则设置偏移量
+                        //如果此组名item顶部和父容器顶部距离大于等于title的高度,则设置偏移量
                         if (view.getTop() >= tHeight) {
                             rightTitle.setY(view.getTop() - tHeight);
                         } else {
